@@ -30,4 +30,4 @@ jobs:
         run: deck version
       - name: Validate Kong declarative configuration
         # run: deck validate -s kong3.x.yaml
-        run : deck file openapi2kong --spec export.yaml --output-file kong.yaml
+        run : deck openapi2kong --spec export.yaml --output-file kong.yaml
