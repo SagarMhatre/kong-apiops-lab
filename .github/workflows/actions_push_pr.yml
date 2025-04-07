@@ -14,20 +14,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Change directory to openapi
         run: cd openapi
-      # - name: Setup inso
-      #   uses: kong/setup-inso@v2
-      #   with:
-      #     inso-version: 10.3.1
-      # - name: Check inso version
-      #   run: inso --version
-      # - name: Generate Kong declarative configuration from Spec        
-      #   run: inso export spec spc_2e84c8 --output kong3.x.yaml
-      - name: Setup deck 
+      - name: Setup deck
         uses: kong/setup-deck@v1
         with:
-          deck-version: 1.26.0
+          deck-version: '1.26.0'
+          wrapper: false
       - name: Check deck version
         run: deck version
-      - name: Validate Kong declarative configuration
-        # run: deck validate -s kong3.x.yaml
-        run : deck openapi2kong --spec export.yaml --output-file kong.yaml
+      - name: Convert OpenAPI to Kong
+        run: 
+          deck file openapi2kong --spec export.yaml --output-file kong.yaml
