@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup inso
-        uses: kong/setup-inso@v2
+        uses: kong/setup-inso@v1
         with:
-          inso-version: 10.3.1
-      - name: Check deck version
+          inso-version: 2.4.0
+      - name: Check inso version
         run: inso --version
       - name: Generate Kong declarative configuration from Spec
         run: inso generate config ./openapi/orders.yaml --type declarative > kong2.x.yaml
